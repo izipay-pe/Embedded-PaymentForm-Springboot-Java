@@ -176,7 +176,7 @@ Se configura la función `checkHash` que realizará la validación de los datos 
 
 ```java
 public boolean checkHash(String krHash, String krHashKey, String krAnswer){
-  // Obtenemos la Password y la Clave Pública del archivo 'config.properties'
+  	// Obtenemos la Password y la Clave Pública del archivo 'config.properties'
 	String passwordKey = properties.getProperty("password");
 	String hmacSha256Key = properties.getProperty("hmacKey");
 	String key;
@@ -186,9 +186,9 @@ public boolean checkHash(String krHash, String krHashKey, String krAnswer){
 		key = hmacSha256Key;
 	} else if ("password".equals(krHashKey)) {
         	key = passwordKey;
-  } else {	
+  	} else {	
 		return false;
-  }
+  	}
        	
 	// Calculamos un Hash usando el valor del 'kr-answer' y el valor del 'kr-hash-key'
 	String calculatedHash = HmacSha256(krAnswer, key);
