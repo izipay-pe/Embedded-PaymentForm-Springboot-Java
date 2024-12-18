@@ -131,11 +131,8 @@ public String generarToken(Map<String, String> parameters) {
 	  WebClient webClient = webClientBuilder.build();
 	  String response = webClient.post()
 		  .uri("https://api.micuentaweb.pe/api-payment/V4/Charge/CreatePayment")
-		  .header(HttpHeaders.AUTHORIZATION, "Basic " + encoded)
-		  .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-		  .bodyValue(requestBody.toString())
-		  .retrieve()
-		  .bodyToMono(String.class)
+		  ...
+                  ...
 		  .block();
 
 	  // Extraemos el FormToken
