@@ -272,21 +272,21 @@ Se realiza la verificación de la firma utilizando la función `checkhash` y se 
 ```java
 @PostMapping("/ipn")
   @ResponseBody
-	public String processIpn(
+  public String processIpn(
   @RequestParam Map<String, String> ipnParameters
   ) {
-	  // Verifica el orderStatus PAID
+    // Verifica el orderStatus PAID
     String orderStatus = jsonResponse.getString("orderStatus");
     String orderId = jsonResponse.getJSONObject("orderDetails").getString("orderId");
     String uuid = transactions.getString("uuid");
         
-	  // Válida que la respuesta sea íntegra comprando el hash recibido en el 'kr-hash' con el generado con el 'kr-answer'
+    // Válida que la respuesta sea íntegra comprando el hash recibido en el 'kr-hash' con el generado con el 'kr-answer'
     boolean isValidKey = mcwController.checkHash(krHash, krHashKey, krAnswer);
         
-	  // Procesa la condicional si la firma es correcta
+    // Procesa la condicional si la firma es correcta
     if (isValidKey) {
-		      // Imprimiendo en la terminal el Order Status
-        	return "OK! Order Status: " + orderStatus;
+  	// Imprimiendo en la terminal el Order Status
+	return "OK! Order Status: " + orderStatus;
 ```
 
 La IPN debe ir configurada en el Backoffice Vendedor, en `Configuración -> Reglas de notificación -> URL de notificación al final del pago`
