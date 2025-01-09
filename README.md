@@ -117,7 +117,7 @@ public String generateFormToken(Map<String, String> parameters) {
     // Creando la Conexión
     try {
 	  // Encabezado Basic con concatenación de "usuario:contraseña" en base64
-	  String encoded = Base64.getEncoder().encodeToString((merchantCode+":"+password).getBytes(StandardCharsets.UTF_8));
+	  String encoded = Base64.getEncoder().encodeToString((USERNAME+":"+PASSWORD).getBytes(StandardCharsets.UTF_8));
 
           // Crear la conexión a la API para la creación del FormToken
 	  WebClient webClient = webClientBuilder.build();
